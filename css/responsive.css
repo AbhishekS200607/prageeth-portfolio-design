@@ -1,0 +1,272 @@
+/* ==========================================================================
+   PRAGEETH P. CREATIVE PORTFOLIO — RESPONSIVE STYLES
+   Breakpoints: 1280px, 1024px, 768px, 480px, 360px
+   ========================================================================== */
+
+/* Large Desktop (1440px and above) */
+@media (min-width: 1440px) {
+  .hero-display-name {
+    font-size: clamp(14rem, 21.5vw, 20.5rem);
+  }
+  
+  .hero-portrait-wrapper {
+    max-width: 920px;
+  }
+}
+
+/* Laptops & Standard Desktop (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .projects-grid {
+    gap: 1.75rem;
+  }
+  
+  .projects-grid .project-card,
+  .projects-grid .project-card:nth-child(n) {
+    grid-column: span 6;
+  }
+  
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .modal-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  :root {
+    --header-height: 80px;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  
+  .about-portrait-frame {
+    max-width: 480px;
+    margin-inline: auto;
+  }
+  
+  .service-item {
+    grid-template-columns: 60px 1.5fr 2fr;
+  }
+  
+  .service-arrow {
+    display: none;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
+
+/* Mobile & Small Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 70px;
+    --page-pad-x: 1.25rem;
+    --section-pad-y: 4.5rem;
+  }
+
+  /* Header Mobile Nav Overlay */
+  .menu-toggle-btn {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    background-color: var(--bg-deep);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    z-index: 101;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity var(--trans-smooth), transform var(--trans-smooth), visibility var(--trans-smooth);
+  }
+
+  .main-nav.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* Hero Mobile Recomposition */
+  .hero-section {
+    height: 100svh;
+    min-height: 560px;
+  }
+
+  .hero-display-name {
+    font-size: clamp(3.5rem, 18.5vw, 6.5rem);
+    top: 36%;
+    width: 95vw;
+  }
+
+  .hero-portrait-wrapper {
+    height: 72vh;
+    height: 72svh;
+    max-height: 75%;
+    bottom: 0;
+  }
+
+  .hero-portrait-img {
+    height: 100%;
+    max-width: 95vw;
+  }
+
+  .hero-supporting-row {
+    top: auto;
+    bottom: 5.5rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    width: auto;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-align: center;
+  }
+
+  .hero-bottom-bar {
+    bottom: 1.5rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    width: auto;
+  }
+
+  /* Projects Grid & Filters Mobile */
+  .projects-grid .project-card,
+  .projects-grid .project-card:nth-child(n) {
+    grid-column: span 12;
+  }
+
+  .works-filter-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.85rem;
+    scrollbar-width: none;
+  }
+
+  .works-filter-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    flex-shrink: 0;
+  }
+
+  /* Services Mobile Stack */
+  .service-item {
+    grid-template-columns: 45px 1fr;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .service-desc {
+    grid-column: span 2;
+  }
+
+  /* Process Cards */
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-top {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+  }
+}
+
+/* Small Handheld Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero-display-name {
+    font-size: clamp(3.75rem, 18vw, 5.25rem);
+    top: 35%;
+  }
+
+  .hero-portrait-img {
+    max-height: 52vh;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+  }
+
+  .works-filter-bar {
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .hero-socials {
+    gap: 1rem;
+  }
+  
+  .hero-cta-btn {
+    font-size: 0.75rem;
+  }
+
+  .modal-dialog {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}
+
+/* Extra Small Devices (360px) */
+@media (max-width: 360px) {
+  .hero-display-name {
+    font-size: 3.5rem;
+  }
+
+  .brand-wordmark {
+    font-size: 0.9375rem;
+  }
+
+  .theme-toggle-btn {
+    width: 44px;
+    height: 24px;
+  }
+
+  .theme-toggle-thumb {
+    width: 15px;
+    height: 15px;
+    top: 3px;
+  }
+
+  [data-theme="light"] .theme-toggle-thumb {
+    transform: translateX(-20px);
+  }
+}

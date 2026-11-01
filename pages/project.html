@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details — PRAGEETH P.</title>
+  <meta name="description" content="Project case study and visual presentation by Prageeth P., Independent Graphic Designer & Visual Artist.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  
+  <style>
+    .project-page-wrap {
+      padding-top: calc(var(--header-height) + 2rem);
+      padding-bottom: 6rem;
+      min-height: 100vh;
+    }
+    .back-nav-bar {
+      margin-bottom: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--trans-fast);
+    }
+    .back-link:hover {
+      color: var(--text-main);
+    }
+    .project-hero-media {
+      width: 100%;
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 4rem;
+      background-color: var(--bg-card);
+    }
+    .project-hero-img {
+      width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      margin-inline: auto;
+    }
+    .project-narrative-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+      align-items: flex-start;
+    }
+    .project-full-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .project-headline-lead {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: var(--text-soft);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    .project-full-desc {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+    .spec-group {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .spec-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .spec-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .spec-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .spec-val {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .deliverables-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .deliv-tag {
+      font-size: 0.75rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-line);
+      padding: 0.3rem 0.6rem;
+      border-radius: 2px;
+      color: var(--text-soft);
+    }
+    .project-pagination-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border-line);
+    }
+    @media (max-width: 900px) {
+      .project-narrative-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header scrolled">
+    <div class="header-container">
+      <a href="../index.html" class="brand-wordmark">PRAGEETH P.</a>
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="../index.html#home" class="nav-link">Home</a>
+        <a href="../index.html#work" class="nav-link active">Work</a>
+        <a href="../index.html#about" class="nav-link">About</a>
+        <a href="../index.html#services" class="nav-link">Services</a>
+        <a href="../index.html#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" role="switch" aria-checked="false">
+          <span class="theme-toggle-thumb"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="project-page-wrap">
+    <div class="container">
+      <div class="back-nav-bar">
+        <a href="../index.html#work" class="back-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Back to Selected Works
+        </a>
+        <span id="project-meta-count" class="section-label">01 / 06</span>
+      </div>
+
+      <!-- Hero Visual -->
+      <div class="project-hero-media">
+        <img id="detail-img" class="project-hero-img" src="" alt="Project Artwork">
+      </div>
+
+      <!-- Narrative & Details -->
+      <div class="project-narrative-grid">
+        <div>
+          <span id="detail-category" class="section-label">Category</span>
+          <h1 id="detail-title" class="project-full-title">Project Title</h1>
+          <p id="detail-headline" class="project-headline-lead">Project headline and creative concept</p>
+          <div id="detail-desc" class="project-full-desc">Detailed project description.</div>
+        </div>
+
+        <div class="spec-group">
+          <div class="spec-row">
+            <span class="spec-title">Discipline</span>
+            <span id="detail-discipline" class="spec-val">—</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-title">Client / Context</span>
+            <span id="detail-client" class="spec-val">—</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-title">Role</span>
+            <span id="detail-role" class="spec-val">—</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-title">Year</span>
+            <span id="detail-year" class="spec-val">—</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-title">Deliverables</span>
+            <div id="detail-deliverables" class="deliverables-tags"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="project-pagination-bar">
+        <a id="prev-project-link" href="#" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Previous Project
+        </a>
+        <a id="next-project-link" href="#" class="back-link">
+          Next Project
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© <span id="current-year">2026</span> PRAGEETH P. — GRAPHIC DESIGNER & VISUAL ARTIST</span>
+        <a href="#" id="back-to-top" class="back-to-top-btn">
+          Back to Top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/projects.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get('id') || PROJECTS_DATA[0].id;
+      
+      const projectIndex = PROJECTS_DATA.findIndex(p => p.id === projectId);
+      const project = projectIndex !== -1 ? PROJECTS_DATA[projectIndex] : PROJECTS_DATA[0];
+      const actualIndex = projectIndex !== -1 ? projectIndex : 0;
+
+      // Update metadata
+      document.title = `${project.title} — PRAGEETH P.`;
+      
+      const img = document.getElementById('detail-img');
+      img.src = `../${project.image}`;
+      img.alt = `${project.title} by Prageeth P.`;
+
+      document.getElementById('project-meta-count').textContent = `${project.number} / ${PROJECTS_DATA.length}`;
+      document.getElementById('detail-category').textContent = `${project.number} — ${project.category}`;
+      document.getElementById('detail-title').textContent = project.title;
+      document.getElementById('detail-headline').textContent = project.headline || project.title;
+      document.getElementById('detail-desc').textContent = project.description || '';
+      document.getElementById('detail-discipline').textContent = project.category;
+      
+      const clientEl = document.getElementById('detail-client');
+      if (clientEl) {
+        const clientRow = clientEl.closest('.spec-row');
+        if (project.client) {
+          if (clientRow) clientRow.style.display = 'flex';
+          clientEl.textContent = project.client;
+        } else if (clientRow) {
+          clientRow.style.display = 'none';
+        }
+      }
+      
+      document.getElementById('detail-role').textContent = project.role || 'Graphic Designer & Visual Artist';
+      document.getElementById('detail-year').textContent = project.year || '2024';
+
+      const delivContainer = document.getElementById('detail-deliverables');
+      if (delivContainer) {
+        const delivRow = delivContainer.closest('.spec-row');
+        delivContainer.innerHTML = '';
+        if (project.deliverables && project.deliverables.length > 0) {
+          if (delivRow) delivRow.style.display = 'flex';
+          project.deliverables.forEach(d => {
+            const tag = document.createElement('span');
+            tag.className = 'deliv-tag';
+            tag.textContent = d;
+            delivContainer.appendChild(tag);
+          });
+        } else if (delivRow) {
+          delivRow.style.display = 'none';
+        }
+      }
+
+      // Pagination
+      const prevIndex = actualIndex === 0 ? PROJECTS_DATA.length - 1 : actualIndex - 1;
+      const nextIndex = actualIndex === PROJECTS_DATA.length - 1 ? 0 : actualIndex + 1;
+      
+      document.getElementById('prev-project-link').href = `project.html?id=${PROJECTS_DATA[prevIndex].id}`;
+      document.getElementById('next-project-link').href = `project.html?id=${PROJECTS_DATA[nextIndex].id}`;
+    });
+  </script>
+</body>
+</html>
