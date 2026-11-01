@@ -24,7 +24,7 @@ Designed and developed with a **Monochrome Editorial** direction blending Swiss 
    - Oversized condensed typography `PRAGEETH P.` layered behind the portrait.
    - Centered foreground portrait of Prageeth with clean cutout and natural depth.
    - Supporting labels: `GRAPHIC DESIGNER & VISUAL ARTIST` and `CREATIVE PORTFOLIO`.
-   - Bottom elements: Instagram & Behance links (left), `LET'S CREATE` arrow button (right).
+   - Bottom elements: Instagram link (left), `LET'S CREATE` arrow button (right).
    - Functional pill-shaped theme toggle (Dark / Light monochrome gallery modes).
 2. **Page 02 — Selected Works:**
    - Filterable editorial portfolio showcase covering 6 core disciplines:
@@ -131,9 +131,6 @@ prageeth-portfolio/
 
 ## 6. Content Placeholders to Replace Before Final Production Launch
 
-When actual client URLs and phone contacts are ready, update the following clearly marked placeholders:
-
-- `[INSTAGRAM_URL]` — e.g., `https://instagram.com/prageeth.p`
-- `[BEHANCE_URL]` — e.g., `https://behance.net/prageethp`
-- `[EMAIL_ADDRESS]` — e.g., `hello@prageeth.design`
-- `[WHATSAPP_NUMBER]` — e.g., `+91 98765 43210`
+- Instagram: `https://www.instagram.com/21.seriesss?exln=NjB3azhsbWUydTZt` (`@21.seriesss`)
+- Email: `prageeth0760@gmail.com`
+- WhatsApp / Phone: `+91 9633866997` (`https://wa.me/919633866997`)

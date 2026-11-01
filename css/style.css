@@ -486,24 +486,10 @@ ul, ol {
   transform: translateY(-2px);
 }
 
-.social-divider {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.85rem;
-  font-weight: 300;
-  user-select: none;
-  margin-inline: -0.25rem;
-}
-
 .social-svg-ig {
   width: 20px;
   height: 20px;
   stroke: currentColor;
-}
-
-.social-svg-be {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
 }
 
 .hero-cta-btn {
