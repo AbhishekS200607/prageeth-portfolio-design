@@ -1,0 +1,966 @@
+/* ==========================================================================
+   PRAGEETH P. — PROJECT COST ESTIMATOR STYLES
+   Direction: High-End Monochrome Editorial / brutalist luxury
+   Matches approved reference design
+   ========================================================================== */
+
+:root {
+  --estimator-bg: #050505;
+  --estimator-panel-bg: #0A0A0A;
+  --estimator-card-bg: #101010;
+  --estimator-card-hover: #161616;
+  --estimator-border: #262626;
+  --estimator-border-strong: #383838;
+  --estimator-border-active: #FFFFFF;
+  --estimator-text-dim: #737373;
+  --estimator-text-muted: #A3A3A3;
+  --estimator-text-main: #FFFFFF;
+  --estimator-radius-lg: 16px;
+  --estimator-radius-md: 12px;
+  --estimator-radius-sm: 8px;
+}
+
+/* Nav Link Pill for Active Estimator Page */
+.nav-link.nav-link-pill {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 6px 18px;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all var(--trans-fast);
+}
+
+.nav-link.nav-link-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #FFFFFF;
+}
+
+.nav-link.nav-link-pill::after {
+  display: none !important;
+}
+
+/* Page Layout Wrapper */
+.estimator-page {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--estimator-bg);
+  color: var(--estimator-text-main);
+  padding-top: calc(var(--header-height) + 1.5rem);
+  padding-bottom: 5rem;
+  overflow-x: hidden;
+}
+
+/* Background Atmospheric Gradient & Portrait Overlay */
+.estimator-bg-decor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.estimator-portrait-ghost {
+  position: absolute;
+  top: 15vh;
+  left: -2vw;
+  width: min(34vw, 520px);
+  height: 80vh;
+  background: url('../assets/images/prageeth-portrait.webp') no-repeat bottom center;
+  background-size: contain;
+  opacity: 0.12;
+  filter: contrast(1.2) grayscale(100%);
+  mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 75%);
+  z-index: 0;
+}
+
+/* Main 3-Column Grid */
+.estimator-layout-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 28% 44% 28%;
+  gap: 2rem;
+  align-items: flex-start;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding-inline: clamp(1rem, 2.5vw, 3rem);
+}
+
+/* --------------------------------------------------------------------------
+   COLUMN 1: INTRO & FEATURES
+   -------------------------------------------------------------------------- */
+.estimator-col-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.estimator-kicker-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.estimator-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--estimator-text-muted);
+}
+
+.estimator-kicker-line {
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background-color: var(--estimator-border-strong);
+}
+
+.estimator-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 3.8vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--estimator-text-main);
+  margin: 0;
+}
+
+.estimator-intro-desc {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--estimator-text-muted);
+  max-width: 380px;
+  margin: 0;
+}
+
+.estimator-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.estimator-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.estimator-feature-icon-box {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background-color: var(--estimator-panel-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--estimator-text-main);
+}
+
+.estimator-feature-icon-box svg {
+  width: 18px;
+  height: 18px;
+}
+
+.estimator-feature-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--estimator-text-main);
+  margin: 0 0 0.2rem 0;
+}
+
+.estimator-feature-desc {
+  font-size: 0.8125rem;
+  color: var(--estimator-text-dim);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   COLUMN 2: CENTER CALCULATOR PANEL
+   -------------------------------------------------------------------------- */
+.estimator-col-calculator {
+  background-color: var(--estimator-panel-bg);
+  border: 1px solid var(--estimator-border-strong);
+  border-radius: var(--estimator-radius-lg);
+  padding: clamp(1.5rem, 2.2vw, 2.25rem);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4-Step Progress Indicator */
+.estimator-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--estimator-border);
+  margin-bottom: 2rem;
+}
+
+.stepper-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: none;
+  color: var(--estimator-text-dim);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--trans-fast);
+}
+
+.stepper-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  color: var(--estimator-text-muted);
+  transition: all var(--trans-fast);
+}
+
+.stepper-item.active {
+  color: var(--estimator-text-main);
+}
+
+.stepper-item.active .stepper-num {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #000000;
+}
+
+.stepper-item.completed .stepper-num {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.stepper-divider {
+  flex: 1;
+  max-width: 48px;
+  height: 1px;
+  background-color: var(--estimator-border);
+}
+
+/* Step Panes */
+.estimator-step-pane {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+}
+
+.estimator-step-pane.active {
+  display: flex;
+  animation: fadeIn 0.3s ease both;
+}
+
+.step-pane-header {
+  margin-bottom: 1.75rem;
+}
+
+.step-pane-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--estimator-text-main);
+  margin: 0 0 0.35rem 0;
+}
+
+.step-pane-subtitle {
+  font-size: 0.875rem;
+  color: var(--estimator-text-muted);
+  margin: 0;
+}
+
+/* 3x3 Service Cards Grid */
+.services-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.service-select-card {
+  position: relative;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-md);
+  padding: 1.25rem 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+  transition: all var(--trans-fast);
+}
+
+.service-select-card:hover {
+  background-color: var(--estimator-card-hover);
+  border-color: var(--estimator-border-strong);
+  transform: translateY(-2px);
+}
+
+.service-select-card.selected {
+  border-color: var(--estimator-border-active);
+  background-color: #141414;
+  box-shadow: 0 0 0 1px #FFFFFF, 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.service-card-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--estimator-text-main);
+  display: flex;
+  align-items: center;
+}
+
+.service-card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.service-card-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  color: #000000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-card-check svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 3;
+}
+
+.service-select-card.selected .service-card-check {
+  display: flex;
+}
+
+.service-card-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--estimator-text-main);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.service-card-price {
+  font-size: 0.8125rem;
+  color: var(--estimator-text-muted);
+  margin: 0;
+  margin-top: auto;
+}
+
+/* Step 2: Dynamic Project Details */
+.step-details-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.detail-control-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.detail-control-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--estimator-text-muted);
+}
+
+/* Quantity Counter Component */
+.quantity-counter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-sm);
+  padding: 0.5rem 0.75rem;
+  width: fit-content;
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background-color: #1a1a1a;
+  border: 1px solid var(--estimator-border);
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--trans-fast);
+}
+
+.qty-btn:hover {
+  background-color: #2b2b2b;
+  border-color: #444;
+}
+
+.qty-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  min-width: 48px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.qty-unit-label {
+  font-size: 0.8125rem;
+  color: var(--estimator-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Select Dropdown */
+.detail-select-input {
+  width: 100%;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-sm);
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+  transition: border-color var(--trans-fast);
+}
+
+.detail-select-input:focus {
+  outline: none;
+  border-color: #FFFFFF;
+}
+
+/* Add-ons Checkbox List */
+.addons-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.addon-check-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-sm);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.addon-check-card:hover {
+  border-color: var(--estimator-border-strong);
+  background-color: var(--estimator-card-hover);
+}
+
+.addon-check-card.checked {
+  border-color: #FFFFFF;
+  background-color: #141414;
+}
+
+.addon-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid var(--estimator-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: all var(--trans-fast);
+}
+
+.addon-check-card.checked .custom-checkbox {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #000000;
+}
+
+.custom-checkbox svg {
+  display: none;
+  width: 12px;
+  height: 12px;
+  stroke-width: 3;
+}
+
+.addon-check-card.checked .custom-checkbox svg {
+  display: block;
+}
+
+.addon-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--estimator-text-main);
+}
+
+.addon-price-badge {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--estimator-text-muted);
+}
+
+/* Step 3: Delivery Options */
+.delivery-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.delivery-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-md);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.delivery-card:hover {
+  border-color: var(--estimator-border-strong);
+}
+
+.delivery-card.selected {
+  border-color: #FFFFFF;
+  background-color: #141414;
+  box-shadow: 0 0 0 1px #FFFFFF;
+}
+
+.delivery-card-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 0.25rem 0;
+}
+
+.delivery-card-subtitle {
+  font-size: 0.8125rem;
+  color: var(--estimator-text-muted);
+  margin: 0;
+}
+
+.delivery-card-price {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+/* Step 4: Summary Table */
+.summary-review-table {
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.summary-row-label {
+  color: var(--estimator-text-muted);
+}
+
+.summary-row-val {
+  font-weight: 600;
+  color: #FFFFFF;
+  text-align: right;
+}
+
+.summary-row.total-row {
+  padding-top: 1rem;
+  border-top: 1px solid var(--estimator-border);
+  font-size: 1.0625rem;
+}
+
+.summary-row.total-row .summary-row-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+/* Navigation Step Footer Buttons */
+.step-actions-bar {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--estimator-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.step-btn-back {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--estimator-border-strong);
+  border-radius: var(--estimator-radius-sm);
+  color: var(--estimator-text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.step-btn-back:hover {
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.step-btn-next {
+  padding: 11px 24px;
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border-radius: 999px;
+  color: #000000;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--trans-fast);
+}
+
+.step-btn-next:hover {
+  background-color: #E5E5E5;
+  transform: translateX(2px);
+}
+
+/* --------------------------------------------------------------------------
+   COLUMN 3: RIGHT ESTIMATE & ENQUIRY PANELS
+   -------------------------------------------------------------------------- */
+.estimator-col-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.estimator-side-panel {
+  background-color: var(--estimator-panel-bg);
+  border: 1px solid var(--estimator-border-strong);
+  border-radius: var(--estimator-radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Panel A: Live Estimate */
+.estimate-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.estimate-panel-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.estimate-currency-badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #141414;
+  border: 1px solid var(--estimator-border);
+  color: var(--estimator-text-muted);
+}
+
+.estimate-lines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.estimate-line-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+}
+
+.estimate-line-label {
+  color: var(--estimator-text-dim);
+}
+
+.estimate-line-val {
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.estimate-divider {
+  height: 1px;
+  background-color: var(--estimator-border);
+  margin-bottom: 1.25rem;
+}
+
+.estimate-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.estimate-total-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--estimator-text-muted);
+}
+
+.estimate-grand-total {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+/* Panel B: Customer Enquiry Form */
+.enquiry-panel-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0 0 1.25rem 0;
+}
+
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-field-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--estimator-text-muted);
+}
+
+.enquiry-input,
+.enquiry-textarea {
+  width: 100%;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-sm);
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  padding: 0.7rem 0.85rem;
+  transition: border-color var(--trans-fast);
+}
+
+.enquiry-input:focus,
+.enquiry-textarea:focus {
+  outline: none;
+  border-color: #FFFFFF;
+}
+
+.enquiry-input::placeholder,
+.enquiry-textarea::placeholder {
+  color: #555555;
+}
+
+.phone-input-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.country-code-select {
+  width: 80px;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-sm);
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.7rem 0.5rem;
+  cursor: pointer;
+}
+
+.enquiry-textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+/* Send on WhatsApp Button */
+.whatsapp-submit-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background-color: #FFFFFF;
+  color: #000000;
+  border: none;
+  border-radius: var(--estimator-radius-sm);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: all var(--trans-fast);
+}
+
+.whatsapp-submit-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.whatsapp-submit-btn:hover {
+  background-color: #E5E5E5;
+  transform: translateY(-1px);
+}
+
+.form-error-msg {
+  font-size: 0.75rem;
+  color: #FF5A5A;
+  display: none;
+  margin-top: 0.25rem;
+}
+
+.form-field-group.has-error .enquiry-input,
+.form-field-group.has-error .enquiry-textarea {
+  border-color: #FF5A5A;
+}
+
+.form-field-group.has-error .form-error-msg {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (Tablets & Mobile)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .estimator-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .estimator-col-intro {
+    max-width: 700px;
+  }
+
+  .services-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .estimator-col-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .estimator-page {
+    padding-top: 5.5rem;
+  }
+
+  .estimator-portrait-ghost {
+    display: none;
+  }
+
+  .estimator-layout-grid {
+    padding-inline: 1rem;
+    gap: 2rem;
+  }
+
+  .estimator-col-intro {
+    padding-top: 0;
+  }
+
+  .estimator-main-title {
+    font-size: 2.5rem;
+  }
+
+  .services-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stepper-item span:not(.stepper-num) {
+    display: none;
+  }
+
+  .estimator-col-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .step-actions-bar {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
