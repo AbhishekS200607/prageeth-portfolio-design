@@ -1,57 +1,133 @@
 /* ==========================================================================
    PRAGEETH P. — PROJECT COST ESTIMATOR STYLES
-   Direction: High-End Monochrome Editorial / brutalist luxury
-   Matches approved reference design
+   Direction: High-End Monochrome Editorial / Brutalist Luxury
+   Optimized for: Desktop (1920px+), Laptops (1024px – 1440px), Tablets & Mobile
+   Full Support: Dark & Light Theme Modes
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   THEME DESIGN TOKENS
+   -------------------------------------------------------------------------- */
 :root {
+  /* Dark Theme (Default) */
   --estimator-bg: #050505;
   --estimator-panel-bg: #0A0A0A;
   --estimator-card-bg: #101010;
   --estimator-card-hover: #161616;
+  --estimator-card-selected: #141414;
   --estimator-border: #262626;
   --estimator-border-strong: #383838;
   --estimator-border-active: #FFFFFF;
   --estimator-text-dim: #737373;
   --estimator-text-muted: #A3A3A3;
   --estimator-text-main: #FFFFFF;
+
+  --estimator-pill-bg: rgba(255, 255, 255, 0.05);
+  --estimator-pill-bg-hover: rgba(255, 255, 255, 0.12);
+  --estimator-pill-border: rgba(255, 255, 255, 0.4);
+  --estimator-pill-text: #FFFFFF;
+
+  --estimator-btn-primary-bg: #FFFFFF;
+  --estimator-btn-primary-text: #000000;
+  --estimator-btn-primary-hover: #E5E5E5;
+
+  --estimator-input-bg: #101010;
+  --estimator-input-text: #FFFFFF;
+  --estimator-input-placeholder: #555555;
+  --estimator-badge-bg: #141414;
+  --estimator-badge-text: #A3A3A3;
+
+  --estimator-shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.65);
+  --estimator-shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --estimator-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+  --estimator-ghost-opacity: 0.12;
+  --estimator-ghost-blend: normal;
+
   --estimator-radius-lg: 16px;
   --estimator-radius-md: 12px;
   --estimator-radius-sm: 8px;
 }
 
-/* Nav Link Pill for Active Estimator Page */
+/* Light Mode Overrides (Architectural Luxury Monochrome) */
+[data-theme="light"] {
+  --estimator-bg: #F5F5F3;
+  --estimator-panel-bg: #FFFFFF;
+  --estimator-card-bg: #F9F9F8;
+  --estimator-card-hover: #EFEFEA;
+  --estimator-card-selected: #F2F2F0;
+  --estimator-border: #E2E2DF;
+  --estimator-border-strong: #C8C8C4;
+  --estimator-border-active: #0A0A0A;
+  --estimator-text-dim: #888884;
+  --estimator-text-muted: #555552;
+  --estimator-text-main: #0A0A0A;
+
+  --estimator-pill-bg: rgba(0, 0, 0, 0.05);
+  --estimator-pill-bg-hover: rgba(0, 0, 0, 0.1);
+  --estimator-pill-border: rgba(0, 0, 0, 0.35);
+  --estimator-pill-text: #0A0A0A;
+
+  --estimator-btn-primary-bg: #0A0A0A;
+  --estimator-btn-primary-text: #FFFFFF;
+  --estimator-btn-primary-hover: #262626;
+
+  --estimator-input-bg: #FFFFFF;
+  --estimator-input-text: #0A0A0A;
+  --estimator-input-placeholder: #999996;
+  --estimator-badge-bg: #EDEDEA;
+  --estimator-badge-text: #444440;
+
+  --estimator-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.07);
+  --estimator-shadow-md: 0 10px 24px rgba(0, 0, 0, 0.05);
+  --estimator-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  --estimator-ghost-opacity: 0.05;
+  --estimator-ghost-blend: multiply;
+}
+
+/* --------------------------------------------------------------------------
+   GLOBAL PAGE STYLING & NAVIGATION
+   -------------------------------------------------------------------------- */
+.estimator-page-body {
+  background-color: var(--estimator-bg);
+  color: var(--estimator-text-main);
+  transition: background-color var(--trans-smooth), color var(--trans-smooth);
+}
+
+/* Active Nav Pill */
 .nav-link.nav-link-pill {
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid var(--estimator-pill-border);
   border-radius: 999px;
   padding: 6px 18px;
-  color: #FFFFFF !important;
+  color: var(--estimator-pill-text) !important;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--estimator-pill-bg);
   transition: all var(--trans-fast);
 }
 
 .nav-link.nav-link-pill:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: #FFFFFF;
+  background: var(--estimator-pill-bg-hover);
+  border-color: var(--estimator-border-active);
 }
 
 .nav-link.nav-link-pill::after {
   display: none !important;
 }
 
-/* Page Layout Wrapper */
+/* Page Wrapper */
 .estimator-page {
   position: relative;
   min-height: 100vh;
   background-color: var(--estimator-bg);
   color: var(--estimator-text-main);
-  padding-top: calc(var(--header-height) + 1.5rem);
+  padding-top: calc(var(--header-height) + 1.25rem);
   padding-bottom: 5rem;
   overflow-x: hidden;
+  transition: background-color var(--trans-smooth), color var(--trans-smooth);
 }
 
-/* Background Atmospheric Gradient & Portrait Overlay */
+/* Background Atmosphere & Decorative Portrait */
 .estimator-bg-decor {
   position: fixed;
   inset: 0;
@@ -63,27 +139,32 @@
 .estimator-portrait-ghost {
   position: absolute;
   top: 15vh;
-  left: -2vw;
-  width: min(34vw, 520px);
+  left: 2vw;
+  width: min(28vw, 420px);
   height: 80vh;
   background: url('../assets/images/prageeth-portrait.webp') no-repeat bottom center;
   background-size: contain;
-  opacity: 0.12;
-  filter: contrast(1.2) grayscale(100%);
+  opacity: var(--estimator-ghost-opacity);
+  mix-blend-mode: var(--estimator-ghost-blend);
+  filter: contrast(1.15) grayscale(100%);
   mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 75%);
   -webkit-mask-image: radial-gradient(circle at 50% 40%, black 20%, transparent 75%);
   z-index: 0;
+  transition: opacity var(--trans-smooth);
 }
 
-/* Main 3-Column Grid */
+/* --------------------------------------------------------------------------
+   MAIN 3-COLUMN EDITORIAL GRID LAYOUT
+   Flexible, overflow-safe distribution for Laptop and Desktop
+   -------------------------------------------------------------------------- */
 .estimator-layout-grid {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 28% 44% 28%;
-  gap: 2rem;
+  grid-template-columns: minmax(260px, 1.05fr) minmax(460px, 1.75fr) minmax(300px, 1.2fr);
+  gap: clamp(1rem, 1.8vw, 2rem);
   align-items: flex-start;
-  max-width: 1720px;
+  max-width: 1680px;
   margin: 0 auto;
   padding-inline: clamp(1rem, 2.5vw, 3rem);
 }
@@ -94,14 +175,15 @@
 .estimator-col-intro {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding-top: 1rem;
+  gap: 1.75rem;
+  padding-top: 0.5rem;
+  min-width: 0;
 }
 
 .estimator-kicker-row {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .estimator-kicker {
@@ -114,45 +196,46 @@
 
 .estimator-kicker-line {
   flex: 1;
-  max-width: 60px;
+  max-width: 50px;
   height: 1px;
   background-color: var(--estimator-border-strong);
 }
 
 .estimator-main-title {
   font-family: var(--font-display);
-  font-size: clamp(2.75rem, 3.8vw, 4.5rem);
-  line-height: 0.95;
+  font-size: clamp(2.4rem, 3.4vw, 4.25rem);
+  line-height: 0.96;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--estimator-text-main);
   margin: 0;
+  text-wrap: balance;
 }
 
 .estimator-intro-desc {
   font-size: 0.9375rem;
   line-height: 1.65;
   color: var(--estimator-text-muted);
-  max-width: 380px;
+  max-width: 360px;
   margin: 0;
 }
 
 .estimator-features-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 0.5rem;
+  gap: 1.15rem;
+  margin-top: 0.25rem;
 }
 
 .estimator-feature-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .estimator-feature-icon-box {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
   background-color: var(--estimator-panel-bg);
   border: 1px solid var(--estimator-border);
@@ -161,6 +244,8 @@
   align-items: center;
   justify-content: center;
   color: var(--estimator-text-main);
+  box-shadow: var(--estimator-shadow-card);
+  transition: background-color var(--trans-fast), border-color var(--trans-fast);
 }
 
 .estimator-feature-icon-box svg {
@@ -173,13 +258,14 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--estimator-text-main);
-  margin: 0 0 0.2rem 0;
+  margin: 0 0 0.15rem 0;
 }
 
 .estimator-feature-desc {
   font-size: 0.8125rem;
   color: var(--estimator-text-dim);
   margin: 0;
+  line-height: 1.4;
 }
 
 /* --------------------------------------------------------------------------
@@ -189,27 +275,30 @@
   background-color: var(--estimator-panel-bg);
   border: 1px solid var(--estimator-border-strong);
   border-radius: var(--estimator-radius-lg);
-  padding: clamp(1.5rem, 2.2vw, 2.25rem);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
-  min-height: 620px;
+  padding: clamp(1.4rem, 2vw, 2.25rem);
+  box-shadow: var(--estimator-shadow-lg);
+  min-height: 580px;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  transition: background-color var(--trans-smooth), border-color var(--trans-smooth), box-shadow var(--trans-smooth);
 }
 
-/* 4-Step Progress Indicator */
+/* 4-Step Progress Stepper */
 .estimator-stepper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--estimator-border);
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
+  gap: 0.5rem;
 }
 
 .stepper-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   background: transparent;
   border: none;
   color: var(--estimator-text-dim);
@@ -242,14 +331,14 @@
 }
 
 .stepper-item.active .stepper-num {
-  background-color: #FFFFFF;
-  border-color: #FFFFFF;
-  color: #000000;
+  background-color: var(--estimator-btn-primary-bg);
+  border-color: var(--estimator-btn-primary-bg);
+  color: var(--estimator-btn-primary-text);
 }
 
 .stepper-item.completed .stepper-num {
-  border-color: #FFFFFF;
-  color: #FFFFFF;
+  border-color: var(--estimator-border-active);
+  color: var(--estimator-border-active);
 }
 
 .stepper-divider {
@@ -272,16 +361,16 @@
 }
 
 .step-pane-header {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .step-pane-title {
   font-family: var(--font-display);
-  font-size: 1.75rem;
+  font-size: 1.65rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--estimator-text-main);
-  margin: 0 0 0.35rem 0;
+  margin: 0 0 0.3rem 0;
 }
 
 .step-pane-subtitle {
@@ -294,8 +383,8 @@
 .services-card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
 }
 
 .service-select-card {
@@ -303,12 +392,13 @@
   background-color: var(--estimator-card-bg);
   border: 1px solid var(--estimator-border);
   border-radius: var(--estimator-radius-md);
-  padding: 1.25rem 1rem;
+  padding: 1.15rem 0.9rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
   text-align: left;
+  min-width: 0;
   transition: all var(--trans-fast);
 }
 
@@ -320,32 +410,33 @@
 
 .service-select-card.selected {
   border-color: var(--estimator-border-active);
-  background-color: #141414;
-  box-shadow: 0 0 0 1px #FFFFFF, 0 8px 24px rgba(0, 0, 0, 0.4);
+  background-color: var(--estimator-card-selected);
+  box-shadow: 0 0 0 1px var(--estimator-border-active), var(--estimator-shadow-card);
 }
 
 .service-card-icon {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   color: var(--estimator-text-main);
   display: flex;
   align-items: center;
 }
 
 .service-card-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
 }
 
 .service-card-check {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 9px;
+  right: 9px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #FFFFFF;
-  color: #000000;
+  background-color: var(--estimator-btn-primary-bg);
+  color: var(--estimator-btn-primary-text);
   display: none;
   align-items: center;
   justify-content: center;
@@ -362,15 +453,16 @@
 }
 
 .service-card-name {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--estimator-text-main);
   margin: 0;
   line-height: 1.25;
+  word-break: break-word;
 }
 
 .service-card-price {
-  font-size: 0.8125rem;
+  font-size: 0.775rem;
   color: var(--estimator-text-muted);
   margin: 0;
   margin-top: auto;
@@ -380,14 +472,14 @@
 .step-details-group {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .detail-control-block {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
 }
 
 .detail-control-label {
@@ -406,7 +498,7 @@
   background-color: var(--estimator-card-bg);
   border: 1px solid var(--estimator-border);
   border-radius: var(--estimator-radius-sm);
-  padding: 0.5rem 0.75rem;
+  padding: 0.45rem 0.75rem;
   width: fit-content;
 }
 
@@ -414,10 +506,10 @@
   width: 32px;
   height: 32px;
   border-radius: 4px;
-  background-color: #1a1a1a;
+  background-color: var(--estimator-panel-bg);
   border: 1px solid var(--estimator-border);
-  color: #FFFFFF;
-  font-size: 1.25rem;
+  color: var(--estimator-text-main);
+  font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -427,16 +519,16 @@
 }
 
 .qty-btn:hover {
-  background-color: #2b2b2b;
-  border-color: #444;
+  background-color: var(--estimator-card-hover);
+  border-color: var(--estimator-border-strong);
 }
 
 .qty-value {
   font-size: 1.125rem;
   font-weight: 700;
-  min-width: 48px;
+  min-width: 44px;
   text-align: center;
-  color: #FFFFFF;
+  color: var(--estimator-text-main);
 }
 
 .qty-unit-label {
@@ -452,28 +544,74 @@
   background-color: var(--estimator-card-bg);
   border: 1px solid var(--estimator-border);
   border-radius: var(--estimator-radius-sm);
-  color: #FFFFFF;
+  color: var(--estimator-text-main);
   font-size: 0.875rem;
   font-weight: 500;
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 0.9rem;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
   cursor: pointer;
   transition: border-color var(--trans-fast);
 }
 
 .detail-select-input:focus {
   outline: none;
-  border-color: #FFFFFF;
+  border-color: var(--estimator-border-active);
+}
+
+/* Package Options */
+.package-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.package-option-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--estimator-card-bg);
+  border: 1px solid var(--estimator-border);
+  border-radius: var(--estimator-radius-md);
+  padding: 0.9rem 1.15rem;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.package-option-card:hover {
+  border-color: var(--estimator-border-strong);
+  background-color: var(--estimator-card-hover);
+}
+
+.package-option-card.selected {
+  border-color: var(--estimator-border-active);
+  background-color: var(--estimator-card-selected);
+  box-shadow: 0 0 0 1px var(--estimator-border-active);
+}
+
+.package-card-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--estimator-text-main);
+  margin: 0 0 0.2rem 0;
+}
+
+.package-card-desc {
+  font-size: 0.8125rem;
+  color: var(--estimator-text-muted);
+  margin: 0;
+}
+
+.package-card-price {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--estimator-text-main);
 }
 
 /* Add-ons Checkbox List */
 .addons-checklist {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
 .addon-check-card {
@@ -483,7 +621,7 @@
   background-color: var(--estimator-card-bg);
   border: 1px solid var(--estimator-border);
   border-radius: var(--estimator-radius-sm);
-  padding: 0.85rem 1rem;
+  padding: 0.8rem 1rem;
   cursor: pointer;
   transition: all var(--trans-fast);
 }
@@ -494,8 +632,8 @@
 }
 
 .addon-check-card.checked {
-  border-color: #FFFFFF;
-  background-color: #141414;
+  border-color: var(--estimator-border-active);
+  background-color: var(--estimator-card-selected);
 }
 
 .addon-left {
@@ -517,9 +655,9 @@
 }
 
 .addon-check-card.checked .custom-checkbox {
-  background-color: #FFFFFF;
-  border-color: #FFFFFF;
-  color: #000000;
+  background-color: var(--estimator-btn-primary-bg);
+  border-color: var(--estimator-btn-primary-bg);
+  color: var(--estimator-btn-primary-text);
 }
 
 .custom-checkbox svg {
@@ -549,8 +687,8 @@
 .delivery-options-grid {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
 }
 
 .delivery-card {
@@ -560,7 +698,7 @@
   background-color: var(--estimator-card-bg);
   border: 1px solid var(--estimator-border);
   border-radius: var(--estimator-radius-md);
-  padding: 1.25rem;
+  padding: 1.15rem;
   cursor: pointer;
   transition: all var(--trans-fast);
 }
@@ -570,16 +708,16 @@
 }
 
 .delivery-card.selected {
-  border-color: #FFFFFF;
-  background-color: #141414;
-  box-shadow: 0 0 0 1px #FFFFFF;
+  border-color: var(--estimator-border-active);
+  background-color: var(--estimator-card-selected);
+  box-shadow: 0 0 0 1px var(--estimator-border-active);
 }
 
 .delivery-card-title {
   font-size: 0.9375rem;
   font-weight: 700;
-  color: #FFFFFF;
-  margin: 0 0 0.25rem 0;
+  color: var(--estimator-text-main);
+  margin: 0 0 0.2rem 0;
 }
 
 .delivery-card-subtitle {
@@ -591,7 +729,7 @@
 .delivery-card-price {
   font-size: 0.9375rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: var(--estimator-text-main);
 }
 
 /* Step 4: Summary Table */
@@ -602,8 +740,8 @@
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
 }
 
 .summary-row {
@@ -619,14 +757,14 @@
 
 .summary-row-val {
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--estimator-text-main);
   text-align: right;
 }
 
 .summary-row.total-row {
-  padding-top: 1rem;
+  padding-top: 0.9rem;
   border-top: 1px solid var(--estimator-border);
-  font-size: 1.0625rem;
+  font-size: 1rem;
 }
 
 .summary-row.total-row .summary-row-val {
@@ -637,15 +775,15 @@
 /* Navigation Step Footer Buttons */
 .step-actions-bar {
   margin-top: auto;
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--estimator-border);
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .step-btn-back {
-  padding: 10px 20px;
+  padding: 9px 18px;
   background: transparent;
   border: 1px solid var(--estimator-border-strong);
   border-radius: var(--estimator-radius-sm);
@@ -657,16 +795,16 @@
 }
 
 .step-btn-back:hover {
-  color: #FFFFFF;
-  border-color: #FFFFFF;
+  color: var(--estimator-text-main);
+  border-color: var(--estimator-border-active);
 }
 
 .step-btn-next {
-  padding: 11px 24px;
-  background-color: #FFFFFF;
-  border: 1px solid #FFFFFF;
+  padding: 10px 22px;
+  background-color: var(--estimator-btn-primary-bg);
+  border: 1px solid var(--estimator-btn-primary-bg);
   border-radius: 999px;
-  color: #000000;
+  color: var(--estimator-btn-primary-text);
   font-size: 0.875rem;
   font-weight: 700;
   cursor: pointer;
@@ -677,7 +815,8 @@
 }
 
 .step-btn-next:hover {
-  background-color: #E5E5E5;
+  background-color: var(--estimator-btn-primary-hover);
+  border-color: var(--estimator-btn-primary-hover);
   transform: translateX(2px);
 }
 
@@ -687,15 +826,18 @@
 .estimator-col-summary {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  min-width: 0;
 }
 
 .estimator-side-panel {
   background-color: var(--estimator-panel-bg);
   border: 1px solid var(--estimator-border-strong);
   border-radius: var(--estimator-radius-lg);
-  padding: 1.5rem;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  padding: 1.4rem;
+  box-shadow: var(--estimator-shadow-md);
+  min-width: 0;
+  transition: background-color var(--trans-smooth), border-color var(--trans-smooth), box-shadow var(--trans-smooth);
 }
 
 /* Panel A: Live Estimate */
@@ -703,15 +845,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .estimate-panel-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: var(--estimator-text-main);
   margin: 0;
 }
 
@@ -721,16 +863,16 @@
   letter-spacing: 0.08em;
   padding: 4px 10px;
   border-radius: 999px;
-  background-color: #141414;
+  background-color: var(--estimator-badge-bg);
   border: 1px solid var(--estimator-border);
-  color: var(--estimator-text-muted);
+  color: var(--estimator-badge-text);
 }
 
 .estimate-lines-list {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .estimate-line-item {
@@ -738,27 +880,32 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.8125rem;
+  gap: 0.5rem;
 }
 
 .estimate-line-label {
   color: var(--estimator-text-dim);
+  white-space: nowrap;
 }
 
 .estimate-line-val {
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--estimator-text-main);
+  text-align: right;
+  word-break: break-word;
 }
 
 .estimate-divider {
   height: 1px;
   background-color: var(--estimator-border);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .estimate-total-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  gap: 0.5rem;
 }
 
 .estimate-total-label {
@@ -769,27 +916,26 @@
 
 .estimate-grand-total {
   font-family: var(--font-display);
-  font-size: 2.25rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
+  font-size: clamp(2rem, 2.5vw, 2.85rem);
   line-height: 1;
+  color: var(--estimator-text-main);
+  letter-spacing: 0.02em;
 }
 
-/* Panel B: Customer Enquiry Form */
+/* Panel B: Project Enquiry Form */
 .enquiry-panel-title {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #FFFFFF;
-  margin: 0 0 1.25rem 0;
+  color: var(--estimator-text-main);
+  margin: 0 0 1.15rem 0;
 }
 
 .enquiry-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .form-field-group {
@@ -807,24 +953,24 @@
 .enquiry-input,
 .enquiry-textarea {
   width: 100%;
-  background-color: var(--estimator-card-bg);
+  background-color: var(--estimator-input-bg);
   border: 1px solid var(--estimator-border);
   border-radius: var(--estimator-radius-sm);
-  color: #FFFFFF;
+  color: var(--estimator-input-text);
   font-size: 0.875rem;
-  padding: 0.7rem 0.85rem;
-  transition: border-color var(--trans-fast);
+  padding: 0.65rem 0.8rem;
+  transition: border-color var(--trans-fast), background-color var(--trans-fast);
 }
 
 .enquiry-input:focus,
 .enquiry-textarea:focus {
   outline: none;
-  border-color: #FFFFFF;
+  border-color: var(--estimator-border-active);
 }
 
 .enquiry-input::placeholder,
 .enquiry-textarea::placeholder {
-  color: #555555;
+  color: var(--estimator-input-placeholder);
 }
 
 .phone-input-row {
@@ -833,29 +979,29 @@
 }
 
 .country-code-select {
-  width: 80px;
-  background-color: var(--estimator-card-bg);
+  width: 90px;
+  background-color: var(--estimator-input-bg);
   border: 1px solid var(--estimator-border);
   border-radius: var(--estimator-radius-sm);
-  color: #FFFFFF;
-  font-size: 0.875rem;
+  color: var(--estimator-input-text);
+  font-size: 0.8125rem;
   font-weight: 600;
-  padding: 0.7rem 0.5rem;
+  padding: 0.65rem 0.5rem;
   cursor: pointer;
 }
 
 .enquiry-textarea {
-  min-height: 85px;
+  min-height: 75px;
   resize: vertical;
 }
 
 /* Send on WhatsApp Button */
 .whatsapp-submit-btn {
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 0.35rem;
   padding: 0.85rem 1.25rem;
-  background-color: #FFFFFF;
-  color: #000000;
+  background-color: var(--estimator-btn-primary-bg);
+  color: var(--estimator-btn-primary-text);
   border: none;
   border-radius: var(--estimator-radius-sm);
   font-size: 0.875rem;
@@ -876,7 +1022,7 @@
 }
 
 .whatsapp-submit-btn:hover {
-  background-color: #E5E5E5;
+  background-color: var(--estimator-btn-primary-hover);
   transform: translateY(-1px);
 }
 
@@ -884,7 +1030,7 @@
   font-size: 0.75rem;
   color: #FF5A5A;
   display: none;
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 .form-field-group.has-error .enquiry-input,
@@ -897,16 +1043,136 @@
 }
 
 /* --------------------------------------------------------------------------
-   RESPONSIVE DESIGN (Tablets & Mobile)
+   RESPONSIVE DESIGN: LAPTOPS (1025px – 1366px / 1440px)
+   Balances horizontal real-estate, prevents clipping, optimizes heights
    -------------------------------------------------------------------------- */
-@media (max-width: 1200px) {
+@media (max-width: 1366px) and (min-width: 1025px) {
   .estimator-layout-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-template-columns: minmax(230px, 1fr) minmax(430px, 1.8fr) minmax(280px, 1.15fr);
+    gap: 1.25rem;
+    padding-inline: 1.5rem;
   }
 
   .estimator-col-intro {
-    max-width: 700px;
+    gap: 1.25rem;
+  }
+
+  .estimator-main-title {
+    font-size: clamp(2.2rem, 2.8vw, 3.2rem);
+  }
+
+  .estimator-intro-desc {
+    font-size: 0.875rem;
+  }
+
+  .estimator-features-list {
+    gap: 0.85rem;
+  }
+
+  .estimator-col-calculator {
+    padding: 1.5rem 1.4rem;
+    min-height: auto;
+  }
+
+  .estimator-stepper {
+    padding-bottom: 1.15rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .stepper-item {
+    font-size: 0.75rem;
+  }
+
+  .services-card-grid {
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-select-card {
+    padding: 0.9rem 0.75rem;
+    gap: 0.45rem;
+  }
+
+  .service-card-name {
+    font-size: 0.8125rem;
+  }
+
+  .service-card-price {
+    font-size: 0.725rem;
+  }
+
+  .service-card-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .service-card-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .estimator-side-panel {
+    padding: 1.2rem;
+  }
+
+  .estimate-panel-title,
+  .enquiry-panel-title {
+    font-size: 1.3rem;
+  }
+
+  .estimate-grand-total {
+    font-size: 2.25rem;
+  }
+
+  .enquiry-input,
+  .enquiry-textarea {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.8125rem;
+  }
+
+  .enquiry-textarea {
+    min-height: 60px;
+  }
+
+  .whatsapp-submit-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .estimator-portrait-ghost {
+    width: 24vw;
+    left: 1vw;
+    opacity: calc(var(--estimator-ghost-opacity) * 0.7);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN: COMPACT LAPTOPS & TABLETS (769px – 1024px)
+   Reflows to 2-column or stacked layout for optimal usability
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .estimator-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-inline: 2rem;
+  }
+
+  .estimator-col-intro {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .estimator-main-title {
+    font-size: 3rem;
+  }
+
+  .estimator-features-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .services-card-grid {
@@ -918,8 +1184,15 @@
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
+
+  .estimator-portrait-ghost {
+    display: none;
+  }
 }
 
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN: MOBILE PHONES (320px – 768px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .estimator-page {
     padding-top: 5.5rem;
@@ -930,6 +1203,7 @@
   }
 
   .estimator-layout-grid {
+    grid-template-columns: 1fr;
     padding-inline: 1rem;
     gap: 2rem;
   }
@@ -944,6 +1218,7 @@
 
   .services-card-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
   }
 
   .stepper-item span:not(.stepper-num) {
